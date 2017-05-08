@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -32,7 +31,6 @@ import org.codehaus.jackson.map.type.TypeFactory;
 import org.json.JSONArray;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,17 +39,17 @@ import java.util.List;
 
 public class RVListViewFragment extends Fragment {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
-    GridLayoutManager gridLayoutManager;
+    private GridLayoutManager gridLayoutManager;
 
-    MainListViewAdapter mainListViewAdapter;
+    private MainListViewAdapter mainListViewAdapter;
 
-    MainGridViewAdapter mainGridViewAdapter;
+    private MainGridViewAdapter mainGridViewAdapter;
 
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
 
-    List<Topic> topics;
+    private List<Topic> topics;
 
     @Nullable
     @Override
@@ -60,6 +58,7 @@ public class RVListViewFragment extends Fragment {
         progressBar = (ProgressBar) view.findViewById(R.id.loadingProgressBarLarge);
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_view_main_list);
         recyclerView.setHasFixedSize(true);
+
         setHasOptionsMenu(true);
         updateAdapterData();
         if(getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
@@ -72,7 +71,6 @@ public class RVListViewFragment extends Fragment {
         recyclerView.setLayoutManager(gridLayoutManager);
         return view;
     }
-
 
     public void updateAdapterData() {
         final ObjectMapper objectMapper = new ObjectMapper();
